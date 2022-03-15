@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "instabug-test",
+    "slug": "instabug-test",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
