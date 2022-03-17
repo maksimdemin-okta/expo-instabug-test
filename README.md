@@ -101,3 +101,9 @@ show instabug button
   }}
 ></Button>
 ```
+
+Run with
+
+```
+yarn android
+```
