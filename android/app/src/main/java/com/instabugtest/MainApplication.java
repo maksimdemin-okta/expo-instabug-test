@@ -19,6 +19,7 @@ import com.facebook.react.bridge.JSIModulePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
@@ -52,6 +53,12 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    new RNInstabugReactnativePackage
+      .Builder("YOUR_APP_TOKEN", MainApplication.this)
+      .setInvocationEvent("none")
+      .build();
+
+
     SoLoader.init(this, /* native exopackage */ false);
 
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());

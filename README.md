@@ -1,5 +1,7 @@
 # Instabug Expo Test
 
+## IOS
+
 Steps to reproduce issue
 
 Create bare workflow with Expo
@@ -48,4 +50,54 @@ Get error
   138 |
   139 | /**
   140 |  * Use lightweight generics syntax instead, e.g. NSArray<NSString *>
+```
+
+## Android
+
+add a local.properties to the android folder with the following info
+
+```
+sdk.dir = /Users/YOUR_NAME/Library/Android/sdk
+```
+
+Follow directions here: https://dashboard.instabug.com/applications/atmosphere/beta/settings/sdk-integrations
+
+1. Navigate to android/app/src/main/java/[...]/MainApplication.java
+
+2. Import the Instabug package:
+
+```
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
+```
+
+3. Add the integration code to the onCreate() method like the below snippet.
+
+```java
+@Override
+public void onCreate() {
+super.onCreate();
+new RNInstabugReactnativePackage
+.Builder("YOUR_APP_TOKEN", MainApplication.this)
+.setInvocationEvent("none")
+.build();
+}
+```
+
+enable replies
+
+```javascript
+useEffect(() => {
+  Replies.setEnabled(true);
+}, []);
+```
+
+show instabug button
+
+```javascript
+<Button
+  title="Open Instabug"
+  onPress={() => {
+    Instabug.show();
+  }}
+></Button>
 ```

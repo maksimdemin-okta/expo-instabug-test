@@ -1,13 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Instabug from 'instabug-reactnative';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import Instabug, { Replies } from 'instabug-reactnative';
 
 export default function App() {
+  useEffect(() => {
+    Replies.setEnabled(true);
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+      <View>
+        <Button
+          title="Open Instabug"
+          onPress={() => {
+            Instabug.show();
+          }}
+        ></Button>
+      </View>
     </View>
   );
 }
